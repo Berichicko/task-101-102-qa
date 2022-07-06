@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FormTest extends Base{
+public class FormTest extends Base {
 
     @Test
     public void testSurname() {
@@ -21,10 +21,6 @@ public class FormTest extends Base{
     @Test
     public void testForm() {
         Assert.assertTrue(homePage.verifyForm());
-        }
+    }
 }
-
-
-
-
 
