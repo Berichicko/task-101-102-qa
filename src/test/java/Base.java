@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class Base {
-    private final static String URL_CONNECTION = "file:///D:/Саша/IT/IT%20Academ_QAQ/Форма%20заказов.html";
+    private final static String URL_CONNECTION = "https://github.com/Berichicko/task-101-102-qa/blob/feature/web-102/Форма%20заказа.html";
     HomePage homePage;
     private WebDriver driver;
 
