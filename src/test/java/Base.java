@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class Base {
-    private final static String URL_CONNECTION = "file:///C:/scr/task-102/Form.html";
+    private final static String URL_CONNECTION = "https://codepen.io/berichicko/full/wvmWPpX";
     HomePage homePage;
     private WebDriver driver;
 
