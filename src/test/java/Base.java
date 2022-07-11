@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class Base {
-    private final static String URL_CONNECTION = "https://github.com/Berichicko/task-101-102-qa/tree/feature/web-102";
+    private final static String URL_CONNECTION = "file:///C:/scr/task-102/Form.html";
     HomePage homePage;
     private WebDriver driver;
 

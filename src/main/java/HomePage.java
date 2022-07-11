@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 public class HomePage {
 
     private final WebDriver driver;
-    private final By surnameField = By.xpath("//td[contains(text(), ' Фамилия:')]");
-    private final By nameField = By.xpath("//td[contains(text(), ' Имя:')]");
-    private final By genderField = By.xpath("//td[contains(text(), ' Пол:')]");
+    private final By surnameField = By.xpath("//td[contains(text(), 'Фамилия:')]");
+    private final By nameField = By.xpath("//td[contains(text(), 'Имя:')]");
+    private final By genderField = By.xpath("//td[contains(text(), 'Пол:')]");
     private final By submitButton = By.xpath("//input[@type='submit']");
 
     public HomePage(WebDriver driver) {
@@ -15,7 +15,7 @@ public class HomePage {
 
     public boolean verifySurname() {
         return driver.findElement(surnameField).
-                getText().contains("Фамилия");
+                getText().contains("Фамилия:");
     }
 
     public boolean verifyName() {
@@ -25,7 +25,7 @@ public class HomePage {
 
     public boolean verifyGender() {
         return driver.findElement(genderField).
-                getText().contains("Пол");
+                getText().contains("Пол:");
     }
 
     public boolean verifyForm() {
