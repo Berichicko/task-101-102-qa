@@ -4,35 +4,56 @@ import org.openqa.selenium.WebDriver;
 public class HomePage {
 
     private final WebDriver driver;
-    private final By surnameField = By.xpath("//input[@name='name']");
-    private final By nameField = By.xpath("//input[@name='height']");
-    private final By genderField = By.xpath("//input[@name='weight']");
+    private final By surnameField = By.xpath("//td[contains(text(), ' Фамилия:')]");
+    private final By nameField = By.xpath("//td[contains(text(), ' Имя:')]");
+    private final By genderField = By.xpath("//td[contains(text(), ' Пол:')]");
     private final By submitButton = By.xpath("//input[@type='submit']");
-    private final By resultText = By.xpath("(//td[@valign='top'])[2]");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
 
     public boolean verifySurname() {
-        return driver.findElement(By.xpath("//td[contains(text(), 'Фамилия:')] ")).
+        return driver.findElement(surnameField).
                 getText().contains("Фамилия");
     }
 
     public boolean verifyName() {
-        return driver.findElement(By.xpath("//td[contains(text(), 'Имя:')] ")).
+        return driver.findElement(nameField).
                 getText().contains("Имя");
     }
 
     public boolean verifyGender() {
-        return driver.findElement(By.xpath("//td[contains(text(), 'Пол:')] ")).
+        return driver.findElement(genderField).
                 getText().contains("Пол");
     }
 
     public boolean verifyForm() {
-        return driver.findElement(By.xpath("//input[@type=\"submit\"][@value=\"Заказать\"]")).
+        return driver.findElement(submitButton).
                 getAttribute("value").contains("Заказать");
     }
 
-}
+    public String getUserSurname() {
+        return driver.findElement(By.xpath("//input[@name = 'name']")).getAttribute("value");
+    }
 
+    public void setUserSurname(String surname) {
+        driver.findElement(By.xpath("//input[@name = 'name']")).sendKeys(surname);
+    }
+
+    public String getUserName() {
+        return driver.findElement(By.xpath("//input[@name = 'height']")).getAttribute("value");
+    }
+
+    public void setUserName(String name) {
+        driver.findElement(By.xpath("//input[@name = 'height']")).sendKeys(name);
+    }
+
+    public void setUserMGender() {
+        driver.findElement(By.xpath("//input[@name='gender'][@value=\"m\"]")).click();
+    }
+
+    public boolean getUserGenderM() {
+        return driver.findElement(By.xpath("//input[@name='gender'][@value=\"m\"]")).isSelected();
+    }
+}
