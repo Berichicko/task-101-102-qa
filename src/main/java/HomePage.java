@@ -4,56 +4,67 @@ import org.openqa.selenium.WebDriver;
 public class HomePage {
 
     private final WebDriver driver;
-    private final By surnameField = By.xpath("//td[contains(text(), 'Фамилия:')]");
-    private final By nameField = By.xpath("//td[contains(text(), 'Имя:')]");
-    private final By genderField = By.xpath("//td[contains(text(), 'Пол:')]");
-    private final By submitButton = By.xpath("//input[@type='submit']");
+    private final By SURNAME_LOCATOR = By.xpath("//td[contains(text(), 'Фамилия:')]");
+    private final By NAME_LOCATOR = By.xpath("//td[contains(text(), 'Имя:')]");
+    private final By GENDER_LOCATOR = By.xpath("//td[contains(text(), 'Пол:')]");
+    private final By BUTTON_FORM_LOCATOR = By.xpath("//input[@type='submit']");
+
+    private final By INPUT_SURNAME_LOCATOR = By.name("surname");
+    private final By INPUT_NAME_LOCATOR = By.name("name");
+    private final By RADIO_GENDER_M_LOCATOR = By.xpath("//input[@name='gender'][@value=\"m\"]");
+
+
+    private final String inputSurnameLabel = "Фамилия:";
+    private final String inputNameLabel = "Имя";
+    private final String inputGenderLabel = "Пол:";
+    private final String buttonForm = "Заказать";
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public boolean verifySurname() {
-        return driver.findElement(surnameField).
-                getText().contains("Фамилия:");
+    public boolean isDisplayedSurname() {
+        return driver.findElement(SURNAME_LOCATOR).
+                getText().contains(inputSurnameLabel);
     }
 
-    public boolean verifyName() {
-        return driver.findElement(nameField).
-                getText().contains("Имя");
+    public boolean isDisplayedName() {
+        return driver.findElement(NAME_LOCATOR).
+                getText().contains(inputNameLabel);
     }
 
-    public boolean verifyGender() {
-        return driver.findElement(genderField).
-                getText().contains("Пол:");
+    public boolean isDisplayedGender() {
+        return driver.findElement(GENDER_LOCATOR).
+                getText().contains(inputGenderLabel);
     }
 
-    public boolean verifyForm() {
-        return driver.findElement(submitButton).
-                getAttribute("value").contains("Заказать");
+    public boolean isDisplayedButtonForm() {
+        return driver.findElement(BUTTON_FORM_LOCATOR).
+                getAttribute("value").contains(buttonForm);
     }
 
-    public String getUserSurname() {
-        return driver.findElement(By.xpath("//input[@name = 'name']")).getAttribute("value");
+    public String getInputSurnameLabel() {
+        return driver.findElement(INPUT_SURNAME_LOCATOR).getAttribute("value");
     }
 
-    public void setUserSurname(String surname) {
-        driver.findElement(By.xpath("//input[@name = 'name']")).sendKeys(surname);
+    public void setInputSurnameLabel(String surname) {
+        driver.findElement(INPUT_SURNAME_LOCATOR).sendKeys(surname);
     }
 
-    public String getUserName() {
-        return driver.findElement(By.xpath("//input[@name = 'height']")).getAttribute("value");
+    public String getInputNameLabel() {
+        return driver.findElement(INPUT_NAME_LOCATOR).getAttribute("value");
     }
 
-    public void setUserName(String name) {
-        driver.findElement(By.xpath("//input[@name = 'height']")).sendKeys(name);
+    public void setInputNameLabel(String name) {
+        driver.findElement(INPUT_NAME_LOCATOR).sendKeys(name);
     }
 
-    public void setUserMGender() {
-        driver.findElement(By.xpath("//input[@name='gender'][@value=\"m\"]")).click();
+    public void setRadioGenderM() {
+        driver.findElement(RADIO_GENDER_M_LOCATOR).click();
     }
 
-    public boolean getUserGenderM() {
-        return driver.findElement(By.xpath("//input[@name='gender'][@value=\"m\"]")).isSelected();
+    public boolean isDisplayedGenderM() {
+        return driver.findElement(RADIO_GENDER_M_LOCATOR).isSelected();
     }
 }

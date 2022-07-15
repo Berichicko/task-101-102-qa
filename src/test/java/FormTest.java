@@ -1,43 +1,53 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FormTest extends Base {
+public class FormTest extends BaseTest {
+    private HomePage homePage;
+    private final String surname = "Ivanov";
+    private final String name = "Peter";
 
     @Test
-    public void testTextSurname() {
-        Assert.assertTrue(homePage.verifySurname());
+    public void testLabelSurname() {
+        homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.isDisplayedSurname());
     }
 
     @Test
-    public void testTextSurnameName() {
-        Assert.assertTrue(homePage.verifyName());
+    public void testLabelName() {
+        homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.isDisplayedName());
     }
 
     @Test
-    public void testTextGender() {
-        Assert.assertTrue(homePage.verifyGender());
+    public void testLabelGender() {
+        homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.isDisplayedGender());
     }
 
     @Test
-    public void testTextForm() {
-        Assert.assertTrue(homePage.verifyForm());
+    public void testButtonLabelForm() {
+        homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.isDisplayedButtonForm());
     }
 
     @Test
     public void testInputSurname() {
-        homePage.setUserSurname("Ivanov");
-        Assert.assertEquals("Ivanov", homePage.getUserSurname());
+        homePage = new HomePage(driver);
+        homePage.setInputSurnameLabel(surname);
+        Assert.assertEquals(surname, homePage.getInputSurnameLabel());
     }
 
     @Test
     public void testInputName() {
-        homePage.setUserName("Peter");
-        Assert.assertEquals("Peter", homePage.getUserName());
+        homePage = new HomePage(driver);
+        homePage.setInputNameLabel(name);
+        Assert.assertEquals(name, homePage.getInputNameLabel());
     }
 
     @Test
     public void testInputGenderM() {
-        homePage.setUserMGender();
-        Assert.assertTrue(homePage.getUserGenderM());
+        homePage = new HomePage(driver);
+        homePage.setRadioGenderM();
+        Assert.assertTrue(homePage.isDisplayedGenderM());
     }
 }
